@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title> Avatar Hero (web-data-generator) </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+    <script type="text/javascript" src="js/avatar-hero.js"></script>
+  </head>
+  <body ng-app="avatar-hero">
+    <div ng-controller="AvatarCtrl" class="container-fluid">
+      <h1 class="text-center"> Avatar Hero <br>
+                               <small>web-data-generator</small> </h1>
+      <div class="row">
+        <div class="col-md-6">
+          <p> The avatar will go here... </p>
+          <!-- Code for controlling the avatar would go here -->
+        </div>
+        <div class="col-md-6">
+          <table class="table table-striped">
+            <caption> AUTOMATICALLY GENERATED SAMPLE EVENTS </caption>
+            <thead>
+              <tr>
+                <th> time </th>
+                <th> deviceId </th>
+                <th> receiverId </th>
+                <th> rssi </th>
+                <th> accelerationX/Y/Z </th>
+                <th> nearest </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="event in events | orderBy:'-time'">
+                <td> {{event.time}} </td>
+                <td> <tt> {{event.deviceId}} </tt> </td>
+                <td> <tt> {{event.receiverId}} </tt> </td>
+                <td> {{event.rssi}} </td>
+                <td> {{event.accelerationX}} | {{event.accelerationY}} |
+                     {{event.accelerationZ}} </td>
+                <td> {{event.nearest}} </td>
+              </tr>
+            </tbody>
+          </table>
+          <p> The <tt>deviceId</tt> is unique for each instrument. </p>
+          <p> The nearest <tt>instanceId</tt> should be the lower 4 bytes of the instrument's deviceId. </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
